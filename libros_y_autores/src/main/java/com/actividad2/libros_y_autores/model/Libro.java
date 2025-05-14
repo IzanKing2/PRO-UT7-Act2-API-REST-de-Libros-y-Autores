@@ -1,10 +1,13 @@
 package com.actividad2.libros_y_autores.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+
 
 @Entity
 @Table(name = "libros")
@@ -15,8 +18,13 @@ public class Libro {
     private Long id;
 
     private String titulo;
+
+    @Column(unique = true)
     private String isbn;
+
     private int anioPublicacion;
+
+    @ManyToOne
     private Autor autor;
 
     public Libro() { }
