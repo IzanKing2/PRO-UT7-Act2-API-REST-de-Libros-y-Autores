@@ -2,9 +2,8 @@ package com.actividad2.libros_y_autores.model;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,8 +22,7 @@ public class Autor {
     private String nombre;
     private String nacionalidad;
 
-    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @OneToMany(mappedBy = "autor")
     private List<Libro> libros;
 
     public Autor() { }
@@ -60,6 +58,7 @@ public class Autor {
         this.nacionalidad = nacionalidad;
     }
 
+    @JsonBackReference
     public List<Libro> getLibros() {
         return libros;
     }
