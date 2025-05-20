@@ -1,7 +1,6 @@
 package com.actividad2.libros_y_autores.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,7 +19,6 @@ public class Libro {
 
     private String titulo;
 
-    @Column(unique = true)
     private String isbn;
 
     private int anioPublicacion;
