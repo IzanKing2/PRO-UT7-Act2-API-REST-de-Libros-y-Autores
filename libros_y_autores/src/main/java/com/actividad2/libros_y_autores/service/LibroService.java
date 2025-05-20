@@ -27,15 +27,9 @@ public class LibroService {
     }
     public void deleteLibro(Long id) { libroRepository.deleteById(id); }
     
-    public List<Libro> buscarLibros(String titulo, Integer anioPublicacion, Sort sort) {
-        if (titulo != null && !titulo.isEmpty() && anioPublicacion != null) {
-            return libroRepository.findByTituloContainingAndAnioPublicacion(titulo, anioPublicacion, sort);
-        } else if (titulo != null && !titulo.isEmpty()) {
-            return libroRepository.findByTituloContaining(titulo, sort);
-        } else if (anioPublicacion != null) {
-            return libroRepository.findByAnioPublicacion(anioPublicacion, sort);
-        } else {
-            return libroRepository.findAll(sort);
-        }
+    public List<Libro> buscarLibros(String titulo, int anioPublicacion, Sort sort) {
+        String title = (titulo == null ? "" : titulo);
+        int anio = (anioPublicacion == 0 ? 0 : anioPublicacion);
+        return libroRepository.findByTitleAnio(title, anio, sort);
     }
 }

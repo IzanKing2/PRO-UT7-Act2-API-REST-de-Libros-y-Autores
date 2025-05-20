@@ -10,12 +10,5 @@ import com.actividad2.libros_y_autores.model.Libro;
 
 @Repository
 public interface LibroRepository extends JpaRepository<Libro, Long> {
-    // Buscar por título parcial
-    List<Libro> findByTituloContaining(String titulo, Sort sort);
-
-    // Buscar por año exacto
-    List<Libro> findByAnioPublicacion(int anio, Sort sort);
-
-    // Buscar por título parcial y año
-    List<Libro> findByTituloContainingAndAnioPublicacion(String titulo, int anio, Sort sort);
+    List<Libro> findByTitleAnio(String titulo, int anioPublicacion, Sort sort);
 }

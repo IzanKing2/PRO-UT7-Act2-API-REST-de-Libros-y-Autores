@@ -52,8 +52,8 @@ public class LibroController {
     public List<Libro> buscarLibro(
             @RequestParam(required = false) String titulo,
             @RequestParam(required = false) Integer anio,
-            @RequestParam(required = false, defaultValue = "id") String sortBy,
-            @RequestParam(required = false, defaultValue = "asc") String order) {
+            @RequestParam(required = false) String sortBy,
+            @RequestParam(required = false) String order) {
         Sort sort = order.equalsIgnoreCase("desc") ? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
         return libroService.buscarLibros(titulo, anio, sort);
     }

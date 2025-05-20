@@ -24,16 +24,16 @@ public class Libro {
 
     private int anioPublicacion;
 
-    @ManyToOne
-    private Autor autor;
+    // @ManyToOne
+    // private Autor autor;
 
     public Libro() { }
 
-    public Libro(String titulo, String isbn, int anioPublicacion, Autor autor) {
+    public Libro(String titulo, String isbn, int anioPublicacion/*, Autor autor*/) {
         this.titulo = titulo;
         this.isbn = isbn;
         this.anioPublicacion = anioPublicacion;
-        this.autor = autor;
+        // this.autor = autor;
     }
 
     /* getters y setters */
@@ -69,11 +69,11 @@ public class Libro {
         this.anioPublicacion = anioPublicacion;
     }
 
-    public Autor getAutor() {
-        return autor;
-    }
+    // public Autor getAutor() {
+    //     return autor;
+    // }
 
-    public void setAutor(Autor autor) {
-        this.autor = autor;
-    }
+    // public void setAutor(Autor autor) {
+    //     this.autor = autor;
+    // }
 }
