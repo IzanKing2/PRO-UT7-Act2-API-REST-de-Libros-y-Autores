@@ -1,6 +1,7 @@
 package com.actividad2.libros_y_autores.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,17 @@ public class AutorService {
         this.autorRepository = autorRepository;
     }
 
-    public List<Autor> listAll() { return autorRepository.findAll(); }
-    /* Añadir método ver autor con sus libros ... */
-    public Autor createAutor(Autor autor) { return autorRepository.save(autor); }
+    public List<Autor> listAll() {
+        return autorRepository.findAll();
+    }
+
+    // Obtiene un único autor por ID
+    public Optional<Autor> listOne(Long id) {
+        return autorRepository.findById(id);
+    }
+
+    // Crea un autor
+    public Autor crearAutor(Autor autor) {
+        return autorRepository.save(autor);
+    }
 }
