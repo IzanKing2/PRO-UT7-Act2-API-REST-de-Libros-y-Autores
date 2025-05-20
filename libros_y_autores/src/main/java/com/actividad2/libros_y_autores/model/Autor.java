@@ -25,7 +25,7 @@ public class Autor {
 
     public Autor() { }
 
-    public Autor(String nombre, String nacionalidad, List<Libro> libros) {
+    public Autor(String nombre, String nacionalidad , List<Libro> libros) {
         this.nombre = nombre;
         this.nacionalidad = nacionalidad;
         this.libros = libros;
