@@ -1,5 +1,6 @@
 package com.actividad2.libros_y_autores.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,6 +26,7 @@ public class Libro {
     private int anioPublicacion;
 
     @ManyToOne
+    @JsonBackReference
     private Autor autor;
 
     public Libro() { }

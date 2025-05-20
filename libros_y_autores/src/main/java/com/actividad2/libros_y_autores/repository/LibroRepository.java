@@ -10,5 +10,6 @@ import com.actividad2.libros_y_autores.model.Libro;
 
 @Repository
 public interface LibroRepository extends JpaRepository<Libro, Long> {
-    List<Libro> findByTitleAnio(String titulo, int anioPublicacion, Sort sort);
+    List<Libro> findByTituloContainingIgnoreCase(String titulo, Sort sort);
+    List<Libro> findByTituloContainingIgnoreCaseAndAnioPublicacion(String titulo, int anioPublicacion, Sort sort);
 }

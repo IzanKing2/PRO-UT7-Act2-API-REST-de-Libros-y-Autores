@@ -27,9 +27,12 @@ public class LibroService {
     }
     public void deleteLibro(Long id) { libroRepository.deleteById(id); }
     
-    public List<Libro> buscarLibros(String titulo, int anioPublicacion, Sort sort) {
+    public List<Libro> buscarLibros(String titulo, Integer anioPublicacion, Sort sort) {
         String title = (titulo == null ? "" : titulo);
-        int anio = (anioPublicacion == 0 ? 0 : anioPublicacion);
-        return libroRepository.findByTitleAnio(title, anio, sort);
+        if (anioPublicacion != null) {
+            return libroRepository.findByTituloContainingIgnoreCaseAndAnioPublicacion(title, anioPublicacion, sort);
+        } else {
+            return libroRepository.findByTituloContainingIgnoreCase(title, sort);
+        }
     }
 }
