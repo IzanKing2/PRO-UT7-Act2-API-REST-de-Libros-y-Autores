@@ -3,6 +3,7 @@ package com.actividad2.libros_y_autores.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.actividad2.libros_y_autores.model.Libro;
@@ -46,6 +48,13 @@ public class LibroController {
     @DeleteMapping("/{id}")
     public void deleteLibro(@PathVariable Long id) { libroService.deleteLibro(id); }
 
-    // Obtiene un libro filtrado y ordenado
-    // Poner el método GET usando filtros ⚠️
+    @GetMapping("/buscar")
+    public List<Libro> buscarLibro(
+            @RequestParam(required = false) String titulo,
+            @RequestParam(required = false) Integer anio,
+            @RequestParam(required = false, defaultValue = "id") String sortBy,
+            @RequestParam(required = false, defaultValue = "asc") String order) {
+        Sort sort = order.equalsIgnoreCase("desc") ? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
+        return libroService.buscarLibros(titulo, anio, sort);
+    }
 }
