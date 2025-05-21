@@ -1,8 +1,9 @@
 package com.actividad2.libros_y_autores.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,7 +24,8 @@ public class Autor {
     private String nacionalidad;
 
     @OneToMany(mappedBy = "autor")
-    private List<Libro> libros;
+    @JsonManagedReference
+    private List<Libro> libros = new ArrayList<>();
 
     public Autor() { }
 
@@ -58,7 +60,6 @@ public class Autor {
         this.nacionalidad = nacionalidad;
     }
 
-    @JsonBackReference
     public List<Libro> getLibros() {
         return libros;
     }
@@ -66,6 +67,4 @@ public class Autor {
     public void setLibros(List<Libro> libros) {
         this.libros = libros;
     }
-
-    
 }
